@@ -2,32 +2,35 @@
 // This kata requires you to write a function which merges two strings together. It does so by merging the end of the first string with the start of the second string together when they are an exact match.
 'use strict';
 
+const x = 'abcdef';
+const y = 'cdwqws';
+console.log(x);
+console.log(y);
+
 //глекодsx яка не спрацювала нормально
 function mergeStrings(x, y) {
   for (let i = y.length; i > 0; i--) {
-    for (let j = 0; j < x.length; j++) {
+    for (let j = 1; j < x.length; j++) {
       if (x.slice(j, j + i) === y.slice(0, i)) {
-        return x.slice(0, j) + y + x.slice(j + i, x.length);
+        return x + y.slice(i, y.length);
       }
     }
   }
   return x + y;
 }
-// console.log(mergeStrings('abaab', 'aabab'));
+console.log(mergeStrings(x, y));
 
 function mergeStrings1(str1, str2) {
   let overlap = '';
   for (let i = 1; i <= str1.length; i++) {
-    let suffix = str1.slice(-i);
-    let prefix = str2.slice(0, i);
-    if (suffix === prefix) {
-      overlap = suffix;
+    if (str1.slice(-i) === str2.slice(0, i)) {
+      overlap = str1.slice(-i);
     }
   }
   return str1 + str2.slice(overlap.length);
 }
 
-console.log(mergeStrings1('abaab', 'aabab'));
+console.log(mergeStrings1(x, y));
 
 function name(x, y) {
   let g = 3;
